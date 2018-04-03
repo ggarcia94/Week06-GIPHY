@@ -1,0 +1,8 @@
+.btn {
+    margin: 10px;
+}
+
+.image, .text {
+    margin: 10px;
+    float: left;
+}
