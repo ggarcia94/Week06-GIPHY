@@ -1,4 +1,4 @@
-//Create an array with the topics
+//Variables
 var topics = ["chicken", "cat", "bird", "cow"];
 var stillImages = [];
 var animatedImages = [];
@@ -58,10 +58,11 @@ function apiCall (buttonClicked) {
             animalImage.attr("class", "image");
             animalImage.attr("value", i);
             animalImage.attr("data", "still");
-
+            
+            //Creating a div tag for the gif rating.
             var ratingTag = $("<div>");
             ratingTag.attr("class", "text");
-            ratingTag.text("Rating:" + rating);
+            ratingTag.text("Rating: " + rating);
 
             // Prepending images to animals tag
             $("#animals").append(ratingTag);
@@ -70,14 +71,15 @@ function apiCall (buttonClicked) {
     });
 }
 
+//Function to add new topic
 $("#addAnimal").on("click", function(event) {
     event.preventDefault();
     var newAnimal = $("#animal-input").val().trim();
     topics.push(newAnimal); 
-    //console.log("Submit clicked:" , newAnimal);
     createButtons(topics);
 });
 
+//Function to get gifs when button clicked
 $(document).on("click", ".btn", function(event) {
     event.preventDefault();
     var buttonClicked = $(this).val();
@@ -85,6 +87,7 @@ $(document).on("click", ".btn", function(event) {
     apiCall(buttonClicked);
 });
 
+//Function to switch between animated or still gif when image is clicked
 $(document).on("click", ".image", function(event) {
     event.preventDefault();
     var pictureClicked = $(this);
@@ -103,16 +106,6 @@ $(document).on("click", ".image", function(event) {
     
 });
 
-
-//$(document).ready(function() {
-//    $(".btn").on("click", function(event) {
-//        event.preventDefault();
-//        var buttonClicked = $(this).val();
-//        console.log("Button clicked:" + buttonClicked);
-//        apiCall(buttonClicked);
-//    });
-
-//});
-
+//Call function to create the buttons
 createButtons(topics);
 
